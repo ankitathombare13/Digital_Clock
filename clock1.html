@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <style>
+        * {
+            font-family: "Orbitron", sans-serif;
+        }
+
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 553px;
+            background-image: url(https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMjItbWluZC0xNl8xLmpwZw.jpg);
+            background-size: 100% 100%;
+        }
+
+
+        .days {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+
+        .box {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            border-radius: 10px;
+            width: 305px;
+            height: 75px;
+            align-items: center;
+        }
+
+
+        h1 {
+            font-size: 30px;
+            margin: 0;
+            text-align: center;
+            margin: 5px 0px;
+        }
+
+
+        .day {
+            color: gray;
+        }
+
+
+        .currentDay {
+            font-weight: 500;
+            color: black;
+        }
+
+
+        #ampm {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <section>
+        <div class="box">
+            <div class="clockBox">
+                <div class="days">
+                    <span class="day" id="mon">Mon</span>
+                    <span class="day" id="tue">Tue</span>
+                    <span class="day" id="wed">Wed</span>
+                    <span class="day" id="thu">Thu</span>
+                    <span class="day" id="fri">Fri</span>
+                    <span class="day" id="sat">Sat</span>
+                    <span class="day" id="sun">Sun</span>
+                </div>
+                <h1><span id="hr">00</span> : <span id="min">00</span> : <span id="sec">00</span> <span
+                        id="ampm">AM</span></h1>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        let hr = document.querySelector('#hr')
+        let min = document.querySelector('#min')
+        let sec = document.querySelector('#sec')
+        let ampm = document.querySelector('#ampm')
+        setInterval(function () {
+            let date = new Date()
+            hr.innerText = (date.getHours() < 10 ? '0' : '') + date.getHours()
+            min.innerText = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes()
+            sec.innerText = (date.getSeconds() < 10 ? '0' : '') + date.getSeconds()
+            ampm.innerText = hr >= 12 ? 'AM' : 'PM'
+
+
+            console.log(date.getDay());
+
+
+            switch (date.getDay()) {
+                case 1:
+                    document.querySelector('#mon').setAttribute('class', 'currentDay')
+                    break;
+                case 2:
+                    document.querySelector('#tue').setAttribute('class', 'currentDay')
+                    break;
+                case 3:
+                    document.querySelector('#wed').setAttribute('class', 'currentDay')
+                    break;
+                case 4:
+                    document.querySelector('#thu').setAttribute('class', 'currentDay')
+                    break;
+                case 5:
+                    document.querySelector('#fri').setAttribute('class', 'currentDay')
+                    break;
+                case 6:
+                    document.querySelector('#sat').setAttribute('class', 'currentDay')
+                    break;
+                case 7:
+                    document.querySelector('#sun').setAttribute('class', 'currentDay')
+                    break;
+            }
+        }, 1000)
+    </script>
+
+
+    
+</body>
+</html>
